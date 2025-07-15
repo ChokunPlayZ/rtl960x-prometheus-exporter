@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  gpon-metrics:
+    build: .
+    ports:
+      - "${WEBSERVER_PORT:-8114}:8114"
+    env_file:
+      - .env
+    environment:
+      - HOSTNAME=${HOSTNAME}
+      - PORT=${PORT}
+      - USER=${USER}
+      - PASSWORD=${PASSWORD}
+      - WEBSERVER_PORT=${WEBSERVER_PORT:-8114}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8114/metrics')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
