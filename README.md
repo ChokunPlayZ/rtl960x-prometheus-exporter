@@ -6,6 +6,8 @@
 
 A Prometheus metrics collector for Realtek RTL960x based xPON ONU devices that runs in Docker.
 
+Original work by, [Strykar](https://gist.github.com/Strykar/584c6467ed023f90b13a059f511d4d1c)
+
 ## Features
 
 - 🔌 Collects metrics from GPON Sticks via SSH
@@ -38,7 +40,7 @@ A Prometheus metrics collector for Realtek RTL960x based xPON ONU devices that r
    # Single device (SSH)
    HOSTNAME=192.168.1.1
    PORT=22
-   USER=admin
+   USERNAME=admin
    PASSWORD=admin
    WEBSERVER_PORT=8114
    ```
@@ -56,7 +58,7 @@ A Prometheus metrics collector for Realtek RTL960x based xPON ONU devices that r
 
 - `HOSTNAME`: Device hostname/IP (required)
 - `PORT`: SSH port (default: 22)
-- `USER`: SSH username (required)
+- `USERNAME`: SSH username (required)
 - `PASSWORD`: SSH password (required)
 - `WEBSERVER_PORT`: Prometheus metrics port (default: 8114)
 
@@ -67,7 +69,7 @@ For multiple devices, use comma-separated values:
 ```bash
 HOSTNAME=192.168.1.1,192.168.2.1,192.168.3.1
 PORT=22,22,22
-USER=admin,admin,admin
+USERNAME=admin,admin,admin
 PASSWORD=admin,admin,admin
 ```
 
@@ -76,7 +78,7 @@ Or use single values that will be applied to all devices:
 ```bash
 HOSTNAME=192.168.1.1,192.168.2.1,192.168.3.1
 PORT=22
-USER=admin
+USERNAME=admin
 PASSWORD=admin
 ```
 
@@ -128,19 +130,6 @@ You can test the SSH connection manually:
 ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc -oHostKeyAlgorithms=+ssh-rsa admin@192.168.1.1
 ```
 
-## Contribution
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a new branch: `git checkout -b feature/YourFeature`
-3. Make your changes
-4. Commit your changes: `git commit -m 'Add new feature'`
-5. Push to the branch: `git push origin feature/YourFeature`
-6. Create a pull request
-
-Please ensure your code follows the existing style and includes appropriate tests.
-
 ## Contributing
 
 1. Fork the repository
@@ -152,12 +141,6 @@ Please ensure your code follows the existing style and includes appropriate test
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Built for GPON device monitoring
-- Uses Prometheus for metrics collection
-- Docker containerized for easy deployment
 
 ## Support
 
