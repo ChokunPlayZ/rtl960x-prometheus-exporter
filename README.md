@@ -1,10 +1,10 @@
-# Prometheus Exporter for Realtek RTL960x xPON ONU Devices
+# Prometheus Exporter for Realtek RTL960x
 
 [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://python.org)
 [![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=Prometheus&logoColor=white)](https://prometheus.io/)
 
-A Prometheus metrics collector for RTL960x that runs in Docker.
+A Prometheus metrics collector for Realtek RTL960x based xPON ONU devices that runs in Docker.
 
 ## Features
 
@@ -24,8 +24,8 @@ A Prometheus metrics collector for RTL960x that runs in Docker.
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
-   cd odi_prome
+   git clone https://github.com/ChokunPlayZ/rtl960x-prometheus-exporter.git
+   cd rtl960x-prometheus-exporter
    ```
 
 2. **Copy the environment template:**
