@@ -65,7 +65,7 @@ A Prometheus metrics collector for RTL960x that runs in Docker.
 For multiple devices, use comma-separated values:
 
 ```bash
-HOSTNAME=192.168.4.1,192.168.4.2,192.168.4.3
+HOSTNAME=192.168.1.1,192.168.2.1,192.168.3.1
 PORT=22,22,22
 USER=admin,admin,admin
 PASSWORD=admin,admin,admin
@@ -74,7 +74,7 @@ PASSWORD=admin,admin,admin
 Or use single values that will be applied to all devices:
 
 ```bash
-HOSTNAME=192.168.4.1,192.168.4.2,192.168.4.3
+HOSTNAME=192.168.1.1,192.168.2.1,192.168.3.1
 PORT=22
 USER=admin
 PASSWORD=admin
