@@ -1,10 +1,10 @@
-# GPON Metrics Collector (Dockerized)
+# Prometheus Exporter for Realtek RTL960x xPON ONU Devices
 
 [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://python.org)
 [![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=Prometheus&logoColor=white)](https://prometheus.io/)
 
-A Prometheus metrics collector for GPON devices that runs in Docker.
+A Prometheus metrics collector for RTL960x that runs in Docker.
 
 ## Features
 
@@ -114,7 +114,6 @@ docker-compose ps
 
 ## Troubleshooting
 
-- Check logs: `docker-compose logs gpon-metrics`
 - Verify connectivity to GPON Stick(s) via SSH
 - Ensure SSH credentials are correct
 - Check firewall settings for both SSH (port 22) and metrics ports
@@ -176,7 +175,6 @@ If you encounter any issues or have questions:
 
 ### v1.0.0
 - Initial release
-- SSH connection with legacy algorithm support
 - Docker containerization
 - Multi-device support
 - Prometheus metrics export
