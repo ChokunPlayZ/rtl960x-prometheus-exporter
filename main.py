@@ -50,7 +50,6 @@ def load_config():
 
 # Load configuration
 config = load_config()
-logger.info(f"Configuration loaded: {config}")
 logger.info(f"Loaded configuration for {len(config['hostnames'])} device(s)")
 
 # Metric Definitions
