@@ -153,6 +153,9 @@ def fetch_and_update_metrics_via_ssh(hostname, port, username, password):
             except Exception as e:
                 logger.error(f"Error executing command '{command}' on {hostname}: {e}")
 
+        # close session using exit
+        client.exec_command('exit')
+        # Close the SSH client
         client.close()
         logger.info(f"Successfully updated metrics for {hostname}")
     except Exception as e:
