@@ -10,7 +10,7 @@ Original work by, [Strykar](https://gist.github.com/Strykar/584c6467ed023f90b13a
 
 ## Features
 
-- 🔌 Collects metrics from GPON Sticks via SSH
+- 🔌 Collects metrics from GPON Sticks via telnet
 - 🏗️ Supports multiple sticks
 - 🐳 Runs in Docker container
 - 🏥 Health checks included
@@ -20,7 +20,7 @@ Original work by, [Strykar](https://gist.github.com/Strykar/584c6467ed023f90b13a
 ### Prerequisites
 
 - Docker and Docker Compose
-- Access to GPON Stick device(s) via SSH
+- Access to GPON Stick device(s) via telnet
 
 ### Quick Start
 
@@ -37,7 +37,7 @@ Original work by, [Strykar](https://gist.github.com/Strykar/584c6467ed023f90b13a
 
 3. **Edit `.env` with your device details:**
    ```bash
-   # Single device (SSH)
+   # Single device
    HOSTNAME=192.168.1.1
    PORT=22
    USERNAME=admin
@@ -57,10 +57,11 @@ Original work by, [Strykar](https://gist.github.com/Strykar/584c6467ed023f90b13a
 ### Environment Variables
 
 - `HOSTNAME`: Device hostname/IP (required)
-- `PORT`: SSH port (default: 22)
-- `USERNAME`: SSH username (required)
-- `PASSWORD`: SSH password (required)
+- `PORT`: Connection port (default: 23)
+- `USER`: Username (required)
+- `PASSWORD`: Password (required)
 - `WEBSERVER_PORT`: Prometheus metrics port (default: 8114)
+- `LOG_LEVEL`: Logging level - `DEBUG`, `INFO`, `WARNING`, `ERROR` (default: INFO)
 
 ### Multiple Devices
 
@@ -116,18 +117,32 @@ docker-compose ps
 
 ## Troubleshooting
 
-- Verify connectivity to GPON Stick(s) via SSH
-- Ensure SSH credentials are correct
-- Check firewall settings for both SSH (port 22) and metrics ports
-- Test connection manually with legacy algorithms: `ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc -oHostKeyAlgorithms=+ssh-rsa admin@<hostname>`
+### General Issues
+- Verify connectivity to GPON Stick(s) via Telnet
+- Ensure credentials are correct
+- Check firewall settings for connection ports and metrics ports
+
+### Telnet-Specific Issues
+If Telnet works in `test.py` but not in the main application:
+
+1. **Enable debug logging:**
+   ```bash
+   LOG_LEVEL=DEBUG
+   ```
+
+2. **Check the login prompts:**
+   - Some devices use different prompts like `Login:` instead of `login:`
+   - Some devices use `>` or `$` instead of `#` for shell prompt
+
+3. **Verify command compatibility:**
+   - Test commands manually via telnet to ensure they work
+   - Some devices might have slightly different command syntax
 
 ## Testing Connection
 
-You can test the SSH connection manually:
-
+You can test the telnet connection manually:
 ```bash
-# Test connection with legacy algorithms
-ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc -oHostKeyAlgorithms=+ssh-rsa admin@192.168.1.1
+telnet 192.168.1.1
 ```
 
 ## Contributing

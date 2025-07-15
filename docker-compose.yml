@@ -13,7 +13,8 @@ services:
       - USER=${USER}
       - PASSWORD=${PASSWORD}
       - WEBSERVER_PORT=${WEBSERVER_PORT:-8114}
-    restart: unless-stopped
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    restart: none
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8114/metrics')"]
       interval: 30s
