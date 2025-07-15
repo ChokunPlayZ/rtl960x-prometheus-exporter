@@ -98,9 +98,6 @@ $RECYCLE.BIN/
 .directory
 .Trash-*
 
-# Docker
-.dockerignore
-
 # Logs
 *.log
 logs/
