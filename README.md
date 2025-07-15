@@ -36,7 +36,7 @@ A Prometheus metrics collector for Realtek RTL960x based xPON ONU devices that r
 3. **Edit `.env` with your device details:**
    ```bash
    # Single device (SSH)
-   HOSTNAME=192.168.4.1
+   HOSTNAME=192.168.1.1
    PORT=22
    USER=admin
    PASSWORD=admin
@@ -118,7 +118,6 @@ docker-compose ps
 - Ensure SSH credentials are correct
 - Check firewall settings for both SSH (port 22) and metrics ports
 - Test connection manually with legacy algorithms: `ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc -oHostKeyAlgorithms=+ssh-rsa admin@<hostname>`
-- Use the included `test.py` script to debug connections
 
 ## Testing Connection
 
@@ -126,10 +125,7 @@ You can test the SSH connection manually:
 
 ```bash
 # Test connection with legacy algorithms
-ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc -oHostKeyAlgorithms=+ssh-rsa admin@192.168.4.1
-
-# Or use the included test script
-python test.py
+ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc -oHostKeyAlgorithms=+ssh-rsa admin@192.168.1.1
 ```
 
 ## Contribution
